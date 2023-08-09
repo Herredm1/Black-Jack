@@ -1,4 +1,6 @@
 import random
+from os import system
+from time import sleep
 
 class Player:
     def __init__(self, score:int, card:dict=None):
@@ -89,9 +91,12 @@ def winningConditions():
         if conditions[k] == True:
             print(outcome[num])
             print(com.hand)
-            playAgain = input("Would you like to play again? (y/n)").lower()
+            
             while True:
+                playAgain = input("Would you like to play again? (y/n): ").lower()
                 if playAgain == 'y':
+                    sleep(2)
+                    system('cls')
                     gameReset()
                     intialdraw()
                     playGame()
@@ -99,6 +104,9 @@ def winningConditions():
                     exit()
                 else:
                     print('Please choose valid option')
+                    sleep(1)
+                    system('cls')
+                    continue
         else:
             num += 1
             continue
@@ -131,10 +139,14 @@ def intialdraw():
     
     if com.score == 21:
         print('Dealer drew 21, restart game.')
+        sleep(2)
+        system('cls')
         gameReset()
         intialdraw()
     elif p1.score == 21:
         print('Great Job, you drew 21. Restarting game.')
+        sleep(2)
+        system('cls')
         gameReset()
         intialdraw()
      
@@ -163,7 +175,7 @@ def cpuLogic():
             
         else:
             continue
-        
+system('cls')        
 print("Welcome to Captlugnut's BlackJack")
 
 def playGame():
@@ -182,8 +194,10 @@ def playGame():
                                        
                     selection:'''))
             if playMenu == '1':
+                system('cls')
                 draw(p1)
             elif playMenu == '2':
+                system('cls')
                 cpuLogic()
             else:
                 print("Please CHoose a valid option")
@@ -193,6 +207,7 @@ while True:
           2. Exit
           Select: '''))
     if selection == 1:
+        system('cls')
         intialdraw()
         playGame()
     elif selection == 2:
